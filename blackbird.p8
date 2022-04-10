@@ -416,27 +416,6 @@ function _draw()
     end
   end
 
- --HUD--
-  -- print("lives "..lives,10,10,6)
-  -- print("jet_step_x ="..jet_step_x,10,20,6)
-  --print("mach "..flr(world_speed),10,10,6)
-  -- print("factory x ".. (factory.x),10,30,6) 
-  -- print("player x ".. (player.x),60,30,6) 
-  -- print("factory y ".. (factory.y),10,40,6) 
-  -- print("player y ".. (player.y),60,40,6) 
-
-
-  -- print("photo top ".. (player.y-photo.height/2),10,70,1) 
-  -- print("photo bottom ".. (player.y+photo.height/2),60,70,2)
-  -- print("photo left".. (player.x-photo.width/2),10,80,3) 
-  -- print("photo right".. (player.x+photo.width/2),60,80,4) 
- --HUD-- 
-
-
-
-
-
-
 end
 __gfx__
 00000000888888880000000000000000000800000008000000008000000000000800000000000000000000000880080000000000000880000000000000000000
