@@ -20,8 +20,8 @@ function _init()
   }
 
   level={
-    snow=true,
-    sand=false,
+    snow=false,
+    sand=true,
     forest=false,
     ocean=false,
     steppe=false,
@@ -70,8 +70,10 @@ function _init()
   photo_success=0
   linefill=1
 
+  background_color=7
   particle_spawn_no=100
   particle_color=6
+  factory_color=6
 
   jet_step_y=0
   jet_step_x=0
@@ -188,7 +190,6 @@ function player_move()
 end
 
 function factory_move()
-
   if factory.y<=128 then
     factory.y+=factory.speed+world_speed
   else
@@ -196,7 +197,6 @@ function factory_move()
     factory.x=rnd(110)+4
     factory.sprite=7+rnd(5)
   end
-
 end
 
 function jets_move()
@@ -213,7 +213,6 @@ function jets_move()
 end
 
 function sams_move()
-
   for eachsam in all(sams) do
     if eachsam.y>=-300 then
       eachsam.y-=(eachsam.speed-world_speed*0.2)
@@ -222,11 +221,9 @@ function sams_move()
       eachsam.x=rnd(120)+4
     end
   end
-
 end
 
 function particles_move()
-
   for eachparticle in all(particles) do
     if eachparticle.y<=128 then
       eachparticle.y+=eachparticle.speed+world_speed
@@ -235,10 +232,21 @@ function particles_move()
       particle_spawn()
     end
   end
-
 end
 
 --DRAW FUNCTIONS--
+
+function draw_level()
+  if level.snow==true then
+    particle_color=6
+    cls(7)
+    factory_color=particle_color
+  elseif level.sand==true then
+    particle_color=9
+    cls(10)
+    factory_color=particle_color
+  end
+end
 
 function draw_photo()
   -- rect(
@@ -303,7 +311,7 @@ function particles_draw()
 end
 
 function factories_draw()
-  pal({[8]=factory.color})
+  pal({[8]=factory_color})
     spr(factory.sprite,factory.x,factory.y)
   pal()
 
@@ -364,9 +372,8 @@ function _draw()
 
   --GAME STATE INTRO--
 
-  if game_state.intro==true then 
-     particle_color=6
-    cls(7)
+  if game_state.intro==true then
+    draw_level()
     particles_draw()
     print("enterig ussr airspace in "..flr(intro_count),10,36,6)
     pal({[8]=player.color})
@@ -386,7 +393,7 @@ function _draw()
   --GAME STATE PLAYING--
 
   if game_state.playing==true then  
-    cls(7)
+    draw_level()
     pal({[8]=6})
       spr(1,100,9)
     pal()
