@@ -2,7 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 35
 __lua__
 
---INITALISE--
+--_INIT (SPECIAL FUNCTION)--
 
 function _init()
   
@@ -18,6 +18,15 @@ function _init()
     help=false,
     lore=false,
   }
+
+  level={
+    snow=true,
+    sand=false,
+    forest=false,
+    ocean=false,
+    steppe=false,
+  }
+
   player={
     x=64,
     y=64,
@@ -314,6 +323,8 @@ function factories_draw()
   end
 end
 
+--_UPDATE (SPECIAL FUNCTION)--
+
 function _update()
   if game_state.intro==true then  
     particles_move()
@@ -333,7 +344,7 @@ function _update()
   end
 end
 
---DRAW--
+--_DRAW (SPECIAL FUNCTION)--
 
 function _draw()
 
