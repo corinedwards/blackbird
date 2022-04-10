@@ -401,7 +401,7 @@ function _draw()
       game_state.fail=false
       game_state.intro=false
       game_state.welcome=true
-      intro_count=4
+      intro_count=2
     end
   end
 
